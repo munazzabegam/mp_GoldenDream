@@ -63,57 +63,8 @@ CREATE TABLE Promoters (
     UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-CREATE TABLE mp_promoters (
-    PromoterID INT AUTO_INCREMENT PRIMARY KEY,
-    PromoterUniqueID VARCHAR(50) UNIQUE ,
-    CustomerID INT ,
-    Name VARCHAR(255) ,
-    Contact VARCHAR(50)  ,
-    Email VARCHAR(255) ,
-    PasswordHash VARCHAR(255) DEFAULT "$2y$10$f8RpDnV887jmqZKOTEm/oesy7nKRboD8HxH5yQMF0xdLO0aTGLnZm",
-    Address TEXT,
-    ProfileImageURL VARCHAR(255),
-    BankAccountName VARCHAR(255),
-    BankAccountNumber VARCHAR(50),
-    IFSCCode VARCHAR(20),
-    BankName VARCHAR(255),
-    PaymentCodeCounter INT DEFAULT 0,
-    ParentPromoterID  VARCHAR(50) DEFAULT NULL,
-    TeamName VARCHAR(200),
-    Status ENUM('Active', 'Inactive') DEFAULT 'Active',
-    Commission  VARCHAR(200),
-    ParentCommission  VARCHAR(200),
-    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-
-
 -- 4. Customers Table (Child of Promoters)
 CREATE TABLE Customers (
-    CustomerID INT AUTO_INCREMENT PRIMARY KEY,
-    CustomerUniqueID  VARCHAR(50)  ,
-    Name VARCHAR(255) ,
-    Contact VARCHAR(50)  ,
-    Email VARCHAR(255) ,
-    PasswordHash VARCHAR(255) DEFAULT "$2y$10$f8RpDnV887jmqZKOTEm/oesy7nKRboD8HxH5yQMF0xdLO0aTGLnZm" ,
-    Address TEXT,
-    ProfileImageURL VARCHAR(255),
-    Gender ENUM('Male', 'Female', 'Other') DEFAULT NULL,
-    DateOfBirth DATE DEFAULT NULL,
-
-    BankAccountName VARCHAR(255),
-    BankAccountNumber VARCHAR(50),
-    IFSCCode VARCHAR(20),
-    BankName VARCHAR(255),
-    PromoterID VARCHAR(50),
-    ReferredBy  VARCHAR(50), 
-    TeamName VARCHAR(200),
-    JoinedDate VARCHAR(50),
-    Status ENUM('Active', 'Inactive', 'Suspended') DEFAULT 'Active',
-    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
-
-    CREATE TABLE mp_customers (
     CustomerID INT AUTO_INCREMENT PRIMARY KEY,
     CustomerUniqueID  VARCHAR(50)  ,
     Name VARCHAR(255) ,
