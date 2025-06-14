@@ -15,7 +15,7 @@ class Database
     public $conn;
 
     // Base URL configuration
-    public static $baseUrl = "https://goldendream.in/";
+    public static $baseUrl = "https://mp.goldendream.in/";
 
     public function getConnection()
     {
