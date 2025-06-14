@@ -29,7 +29,7 @@ class Database
             );
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
-            $baseUrl = "https://goldendream.in/";
+            $baseUrl = "https://mp.goldendream.in/";
 
            header("Location: " . $baseUrl . "noInternet/");
         }
