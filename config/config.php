@@ -9,8 +9,7 @@ class Database
     // public $conn;
 
     public $host = "localhost";
-    public $db_name = "u229215627_mp_goldendream
-	";
+    public $db_name = "u229215627_mp_goldendream";
     public $username = "u229215627_mp_goldendream";
     public $password = "Azl@n2002";
     public $conn;
