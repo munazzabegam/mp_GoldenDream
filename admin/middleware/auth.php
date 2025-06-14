@@ -5,7 +5,7 @@ function verifyAuth()
 {
     // Check for JWT token in cookie
     if (!isset($_COOKIE['admin_token'])) {
-header("Location: https://goldendream.in/admin/login.php");
+header("Location: https://mp.goldendream.in/admin/login.php");
         exit();
     }
 
@@ -15,7 +15,7 @@ header("Location: https://goldendream.in/admin/login.php");
     if (!$decoded) {
         // Token is invalid or expired
         setcookie('admin_token', '', time() - 3600, '/');
-        header("Location: https://goldendream.in/admin/login.php");
+        header("Location: https://mp.goldendream.in/admin/login.php");
         exit();
     }
 
