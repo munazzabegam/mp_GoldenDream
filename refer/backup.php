@@ -22,7 +22,7 @@ $error_message = '';
 $promoterData = null;
 if (!empty($promoterID)) {
     try {
-        $stmt = $conn->prepare("SELECT PromoterID, Name, PromoterUniqueID, Commission, TeamName FROM mp_promoters WHERE PromoterUniqueID = ? AND Status = 'Active'");
+        $stmt = $conn->prepare("SELECT PromoterID, Name, PromoterUniqueID, Commission, TeamName FROM Promoters WHERE PromoterUniqueID = ? AND Status = 'Active'");
         $stmt->execute([$promoterID]);
         $promoterData = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -130,14 +130,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $tableName = 'Customers';
             } else {
                 // Get the latest PromoterID from the Promoters table
-                $stmt = $conn->prepare("SELECT MAX(PromoterID) as max_id FROM mp_promoters");
+                $stmt = $conn->prepare("SELECT MAX(PromoterID) as max_id FROM Promoters");
                 $stmt->execute();
                 $result = $stmt->fetch(PDO::FETCH_ASSOC);
                 $nextPromoterID = ($result['max_id'] ?? 0) + 1;
 
                 // Format: GDP0[promoterid]
                 $uniqueID = 'GDP0' . $nextPromoterID;
-                $tableName = 'mp_promoters';
+                $tableName = 'Promoters';
             }
 
             // Check if the unique ID already exists
@@ -163,7 +163,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if ($registrationType === 'customer') {
                 // Insert customer
-                $query = "INSERT INTO mp_customers (
+                $query = "INSERT INTO Customers (
                     CustomerUniqueID, Name, Contact, PasswordHash, 
                     PromoterID, TeamName, Status, JoinedDate
                 ) VALUES (
@@ -201,7 +201,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $commission = base64_decode($referralCode);
 
                 // Insert promoter
-                $query = "INSERT INTO mp_promoters (
+                $query = "INSERT INTO Promoters (
                     PromoterUniqueID, Name, Contact, PasswordHash, 
                     ParentPromoterID, TeamName, Status, Commission
                 ) VALUES (
