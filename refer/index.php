@@ -16,7 +16,7 @@ function sendWhatsAppMessage($phoneNumber, $message)
         // Get WhatsApp API configuration
         $stmt = $conn->prepare("SELECT APIEndpoint, InstanceID, AccessToken, Status FROM WhatsAppAPIConfig WHERE Status = 'Active' ORDER BY ConfigID DESC LIMIT 1");
         $stmt->execute();
-        $whatsappConfig = $stmt->fetch(PDO::FETCH_ASSOC);
+        $Config = $stmt->fetch(PDO::FETCH_ASSOC);
 
         // Check if WhatsApp is active
         if (!$whatsappConfig || $whatsappConfig['Status'] !== 'Active') {
@@ -263,7 +263,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ]);
 
                 // Send welcome message
-                $welcomeMessage = "🎉 Congratulations! 🎉\n\n$name\n\nYou have successfully registered for the Golden Dream Savings Plan. 🌟\n\n🆔 Your ID: $uniqueID\n🔑 Your Password: goldendream-25\n🔗 https://goldendream.in/customer";
+                $welcomeMessage = "🎉 Congratulations! 🎉\n\n$name\n\nYou have successfully registered for the Golden Dream Savings Plan. 🌟\n\n🆔 Your ID: $uniqueID\n🔑 Your Password: goldendream-25\n🔗 https://mp.goldendream.in/customer";
                 sendWhatsAppMessage($contact, $welcomeMessage);
 
                 $_SESSION['success_message'] = "Customer registered successfully. Your ID is: $uniqueID";
@@ -319,7 +319,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ]);
 
                 // Send welcome message
-                $welcomeMessage = "🎉 Congratulations! 🎉\n\n$name\n\nYou have successfully registered as a Golden Dream Promoter. 🌟\n\n🆔 Your ID: $uniqueID\n🔑 Your Password: goldendream-25\n💰 Commission Rate: $commission\n🔗 https://goldendream.in/promoter";
+                $welcomeMessage = "🎉 Congratulations! 🎉\n\n$name\n\nYou have successfully registered as a Golden Dream Promoter. 🌟\n\n🆔 Your ID: $uniqueID\n🔑 Your Password: goldendream-25\n💰 Commission Rate: $commission\n🔗 https://mp.goldendream.in/promoter";
                 sendWhatsAppMessage($contact, $welcomeMessage);
 
                 $_SESSION['success_message'] = "Promoter registered successfully. Your ID is: $uniqueID";
